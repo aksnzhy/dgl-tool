@@ -26,7 +26,7 @@ with open('train.txt') as f:
 # write
 f = open('entities.dict.local', 'w')
 for key, value in entity2id_local.items():
-    f.write(str(value)+'\t'+key)
+    f.write(str(value)+'\t'+key+'\n')
 f.close()
 
 f = open('local_to_global.txt', 'w')
