@@ -26,8 +26,8 @@ with open('train.txt.full') as f:
             count += 1
         else:
             t_count = entity_book[int(t)]
-        print(str(h_count)+'\t'+str(t_count)+r)
-        local_train_data.append(str(h_count)+'\t'+str(t_count)+r)
+        print(str(h_count)+'\t'+str(t_count)+'\t'+r)
+        local_train_data.append(str(h_count)+'\t'+str(t_count)+'\t'+r)
 
 # write
 f = open('train.txt', 'w')
