@@ -26,13 +26,13 @@ with open('train.txt.full') as f:
             count += 1
         else:
             t_count = entity_book[int(t)]
+        print(str(h_count)+'\t'+str(t_count)+r)
         local_train_data.append(str(h_count)+'\t'+str(t_count)+r)
 
 # write
 f = open('train.txt', 'w')
 for data in local_train_data:
     f.write(data+'\n')
-    print(data+'\n')
 f.close()
 
 f = open('local_to_global.txt', 'w')
