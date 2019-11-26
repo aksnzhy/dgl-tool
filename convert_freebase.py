@@ -7,7 +7,7 @@ local_train_data = []
 local_to_global = []
 entity_book = {}
 
-with open('train.txt.full') as f:
+with open('fb.txt') as f:
     for line in f:
         h_count = 0;
         t_count = 0
@@ -21,11 +21,12 @@ with open('train.txt.full') as f:
             h_count = entity_book[int(h)]
         if t not in entity_book.keys():
             entity_book[int(t)] = count
-            local_to_global.append(int(h))
+            local_to_global.append(int(t))
             t_count = count
             count += 1
         else:
             t_count = entity_book[int(t)]
+            
         local_train_data.append(str(h_count)+'\t'+str(t_count)+'\t'+r)
 
 # write
