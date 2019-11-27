@@ -13,20 +13,20 @@ with open('fb.txt') as f:
         t_count = 0
         h, t, r = line.strip().split('\t')
         if h not in entity_book.keys():
-            entity_book[int(h)] = count
-            local_to_global.append(int(h))
+            entity_book[h] = count
+            local_to_global.append(h)
             h_count = count
             count += 1
         else:
-            h_count = entity_book[int(h)]
+            h_count = entity_book[h]
         if t not in entity_book.keys():
-            entity_book[int(t)] = count
-            local_to_global.append(int(t))
+            entity_book[t] = count
+            local_to_global.append(t)
             t_count = count
             count += 1
         else:
-            t_count = entity_book[int(t)]
-            
+            t_count = entity_book[t]
+
         local_train_data.append(str(h_count)+'\t'+str(t_count)+'\t'+r)
 
 # write
@@ -37,5 +37,5 @@ f.close()
 
 f = open('local_to_global.txt', 'w')
 for data in local_to_global:
-    f.write(str(data)+'\n')
+    f.write(data+'\n')
 f.close()
