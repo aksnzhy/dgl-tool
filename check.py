@@ -68,7 +68,7 @@ print("read train_1..")
 
 with open('train_1.txt') as f:
     for line in f:
-    	total_count += 1
+        total_count += 1
         h, r, t = line.strip().split('\t')
         h_global = local_to_global_1[int(h)]
         t_global = local_to_global_1[int(t)]
