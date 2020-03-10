@@ -122,6 +122,6 @@ with open('test.txt') as f:
     for line in f:
         test_count += 1
 
-print('4 part edges: %d' % (total_count-double_count))
+print('4 part edges: %d' % (total_count-(double_count/2)))
 print('train_count: %d' % (train_count))
 print('train + valid + test: %d' % (train_count+valid_count+test_count))
