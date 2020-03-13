@@ -18,8 +18,12 @@ full_train = {}
 with open('train.txt') as f:
     for line in f:
         h, r, t = line.strip().split('\t')
-        full_train[entities2id[h]+' '+relation2id[r]+' '+entities2id[t]] = 0
+        str_data = entities2id[h]+' '+relation2id[r]+' '+entities2id[t]
+        full_train[str_data] = 0
+        print(str_data)
 
+
+exit()
 
 local2global_0 = []
 local2global_1 = []
@@ -27,90 +31,39 @@ local2global_2 = []
 local2global_3 = []
 
 
-with open('./partition_0/local_to_global.txt') as f:
-    for line in f:
-        g_id = line.strip()
-        local2global_0.append(int(g_id))
-
-with open('./partition_1/local_to_global.txt') as f:
-    for line in f:
-        g_id = line.strip()
-        local2global_1.append(int(g_id))
-
-with open('./partition_2/local_to_global.txt') as f:
-    for line in f:
-        g_id = line.strip()
-        local2global_2.append(int(g_id))
-
-with open('./partition_3/local_to_global.txt') as f:
-    for line in f:
-        g_id = line.strip()
-        local2global_3.append(int(g_id))
+def read_local2global(path, local2global):
+    with open(path) as f:
+        global_id = line.strip()
+        local2global.append(int(global_id))
 
 
-train_0 = []
-train_1 = []
-train_2 = []
-train_3 = []
+read_local2global('./partition_0/local_to_global.txt', local2global_0)
+read_local2global('./partition_1/local_to_global.txt', local2global_1)
+read_local2global('./partition_2/local_to_global.txt', local2global_2)
+read_local2global('./partition_3/local_to_global.txt', local2global_3)
 
 
-with open('./partition_0/train.txt') as f:
-    for line in f:
-        h, r, t = line.strip().split('\t')
-        h_global = local2global_0[int(h)]
-        t_global = local2global_0[int(t)]
-        str_data = str(h_global)+' '+r+' '+str(t_global)
-        if str_data in full_train.keys():
-            if full_train[str_data] == 0:
-                full_train[str_data] += 1
+def check_part_train(path):
+    with open(path) as f:
+        for line in f:
+            h, r, t = line.strip().split('\t')
+            h_global = local2global_0[int(h)]
+            t_global = local2global_0[int(t)]
+            str_data = str(h_global)+' '+r+' '+str(t_global)
+            if str_data in full_train.keys():
+                if full_train[str_data] == 0:
+                    full_train[str_data] += 1
+                else:
+                    print("duplicate key: %s" % str_data)
+                    exit()
             else:
-                print("duplicate key: %s" % str_data)
-        else:
-            print('do not have key: %s' % str_data)
+                print('do not have key: %s' % str_data)
+                exit()
 
 
-with open('./partition_1/train.txt') as f:
-    for line in f:
-        h, r, t = line.strip().split('\t')
-        h_global = local2global_1[int(h)]
-        t_global = local2global_1[int(h)]
-        str_data = str(h_global)+' '+r+' '+str(t_global)
-        if str_data in full_train.keys():
-            if full_train[str_data] == 0:
-                full_train[str_data] += 1
-            else:
-                print("duplicate key: %s" % str_data)
-        else:
-            print('do not have key: %s' % str_data)
+check_part_train('./partition_0/train.txt')
+check_part_train('./partition_1/train.txt')
+check_part_train('./partition_2/train.txt')
+check_part_train('./partition_3/train.txt')
 
-with open('./partition_2/train.txt') as f:
-    for line in f:
-        h, r, t = line.strip().split('\t')
-        h_global = local2global_2[int(h)]
-        t_global = local2global_2[int(h)]
-        str_data = str(h_global)+' '+r+' '+str(t_global)
-        if str_data in full_train.keys():
-            if full_train[str_data] == 0:
-                full_train[str_data] += 1
-            else:
-                print("duplicate key: %s" % str_data)
-        else:
-            print('do not have key: %s' % str_data)
-
-
-with open('./partition_3/train.txt') as f:
-    for line in f:
-        h, r, t = line.strip().split('\t')
-        h_global = local2global_3[int(h)]
-        t_global = local2global_3[int(h)]
-        str_data = str(h_global)+' '+r+' '+str(t_global)
-        if str_data in full_train.keys():
-            if full_train[str_data] == 0:
-                full_train[str_data] += 1
-            else:
-                print("duplicate key: %s" % str_data)
-        else:
-            print('do not have key: %s' % str_data)
-
-
-print("Yes!")
+print("Finish Test")
