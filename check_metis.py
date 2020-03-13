@@ -20,10 +20,7 @@ with open('train.txt') as f:
         h, r, t = line.strip().split('\t')
         str_data = entities2id[h]+' '+relation2id[r]+' '+entities2id[t]
         full_train[str_data] = 0
-        print(str_data)
 
-
-exit()
 
 local2global_0 = []
 local2global_1 = []
@@ -43,27 +40,25 @@ read_local2global('./partition_2/local_to_global.txt', local2global_2)
 read_local2global('./partition_3/local_to_global.txt', local2global_3)
 
 
-def check_part_train(path):
+def check_part_train(path, local2global):
     with open(path) as f:
         for line in f:
             h, r, t = line.strip().split('\t')
-            h_global = local2global_0[int(h)]
-            t_global = local2global_0[int(t)]
+            h_global = local2global[int(h)]
+            t_global = local2global[int(t)]
             str_data = str(h_global)+' '+r+' '+str(t_global)
             if str_data in full_train.keys():
                 if full_train[str_data] == 0:
                     full_train[str_data] += 1
                 else:
                     print("duplicate key: %s" % str_data)
-                    exit()
             else:
                 print('do not have key: %s' % str_data)
-                exit()
 
 
-check_part_train('./partition_0/train.txt')
-check_part_train('./partition_1/train.txt')
-check_part_train('./partition_2/train.txt')
-check_part_train('./partition_3/train.txt')
+check_part_train('./partition_0/train.txt', local2global_0)
+check_part_train('./partition_1/train.txt', local2global_1)
+check_part_train('./partition_2/train.txt', local2global_2)
+check_part_train('./partition_3/train.txt', local2global_3)
 
 print("Finish Test")
