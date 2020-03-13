@@ -30,8 +30,9 @@ local2global_3 = []
 
 def read_local2global(path, local2global):
     with open(path) as f:
-        global_id = line.strip()
-        local2global.append(int(global_id))
+    	for line in f:
+            global_id = line.strip()
+            local2global.append(int(global_id))
 
 
 read_local2global('./partition_0/local_to_global.txt', local2global_0)
