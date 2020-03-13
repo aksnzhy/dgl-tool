@@ -59,7 +59,7 @@ with open('./partition_0/train.txt') as f:
         h, r, t = line.strip().split('\t')
         h_global = local2global_0[int(h)]
         t_global = local2global_0[int(t)]
-        str_data = h_global+' '+r+' '+t_global
+        str_data = str(h_global)+' '+r+' '+str(t_global)
         if full_train.has_key(str_data):
         	if full_train[str_data] == 0:
         		full_train[str_data] += 1
@@ -76,7 +76,7 @@ with open('./partition_1/train.txt') as f:
         h, r, t = line.strip().split('\t')
         h_global = local2global_1[int(h)]
         t_global = local2global_1[int(h)]
-        str_data = h_global+' '+r+' '+t_global
+        str_data = str(h_global)+' '+r+' '+str(t_global)
         if full_train.has_key(str_data):
         	if full_train[str_data] == 0:
         		full_train[str_data] += 1
@@ -92,7 +92,7 @@ with open('./partition_2/train.txt') as f:
         h, r, t = line.strip().split('\t')
         h_global = local2global_2[int(h)]
         t_global = local2global_2[int(h)]
-        str_data = h_global+' '+r+' '+t_global
+        str_data = str(h_global)+' '+r+' '+str(t_global)
         if full_train.has_key(str_data):
         	if full_train[str_data] == 0:
         		full_train[str_data] += 1
@@ -109,7 +109,7 @@ with open('./partition_3/train.txt') as f:
         h, r, t = line.strip().split('\t')
         h_global = local2global_3[int(h)]
         t_global = local2global_3[int(h)]
-        str_data = h_global+' '+r+' '+t_global
+        str_data = str(h_global)+' '+r+' '+str(t_global)
         if full_train.has_key(str_data):
         	if full_train[str_data] == 0:
         		full_train[str_data] += 1
