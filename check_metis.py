@@ -61,14 +61,12 @@ with open('./partition_0/train.txt') as f:
         t_global = local2global_0[int(t)]
         str_data = str(h_global)+' '+r+' '+str(t_global)
         if str_data in full_train.keys():
-        	if full_train[str_data] == 0:
-        		full_train[str_data] += 1
-        	else:
-        		print("duplicate key: %s" % str_data)
-        		exit()
+            if full_train[str_data] == 0:
+                full_train[str_data] += 1
+            else:
+                print("duplicate key: %s" % str_data)
         else:
-        	print('do not have key: %s' % str_data)
-        	exit()
+            print('do not have key: %s' % str_data)
 
 
 with open('./partition_1/train.txt') as f:
@@ -78,14 +76,12 @@ with open('./partition_1/train.txt') as f:
         t_global = local2global_1[int(h)]
         str_data = str(h_global)+' '+r+' '+str(t_global)
         if str_data in full_train.keys():
-        	if full_train[str_data] == 0:
-        		full_train[str_data] += 1
-        	else:
-        		print("duplicate key: %s" % str_data)
-        		exit()
+            if full_train[str_data] == 0:
+                full_train[str_data] += 1
+            else:
+                print("duplicate key: %s" % str_data)
         else:
-        	print('do not have key: %s' % str_data)
-        	exit()
+            print('do not have key: %s' % str_data)
 
 with open('./partition_2/train.txt') as f:
     for line in f:
@@ -94,14 +90,12 @@ with open('./partition_2/train.txt') as f:
         t_global = local2global_2[int(h)]
         str_data = str(h_global)+' '+r+' '+str(t_global)
         if str_data in full_train.keys():
-        	if full_train[str_data] == 0:
-        		full_train[str_data] += 1
-        	else:
-        		print("duplicate key: %s" % str_data)
-        		exit()
+            if full_train[str_data] == 0:
+                full_train[str_data] += 1
+            else:
+                print("duplicate key: %s" % str_data)
         else:
-        	print('do not have key: %s' % str_data)
-        	exit()
+            print('do not have key: %s' % str_data)
 
 
 with open('./partition_3/train.txt') as f:
@@ -111,14 +105,12 @@ with open('./partition_3/train.txt') as f:
         t_global = local2global_3[int(h)]
         str_data = str(h_global)+' '+r+' '+str(t_global)
         if str_data in full_train.keys():
-        	if full_train[str_data] == 0:
-        		full_train[str_data] += 1
-        	else:
-        		print("duplicate key: %s" % str_data)
-        		exit()
+            if full_train[str_data] == 0:
+                full_train[str_data] += 1
+            else:
+                print("duplicate key: %s" % str_data)
         else:
-        	print('do not have key: %s' % str_data)
-        	exit()
+            print('do not have key: %s' % str_data)
 
 
 print("Yes!")
