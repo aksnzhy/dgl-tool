@@ -22,6 +22,31 @@ with open('train.txt') as f:
         full_train[str_data] = 0
 
 
+entities2id_local_0 = {}
+entities2id_local_1 = {}
+entities2id_local_2 = {}
+entities2id_local_3 = {}
+
+with open('./part_0/entities.dict') as f:
+    for line in f:
+        ent_id, ent_str = line.strip().split('\t')
+        entities2id_local_0[ent_str] = int(ent_id)
+
+with open('./part_1/entities.dict') as f:
+    for line in f:
+        ent_id, ent_str = line.strip().split('\t')
+        entities2id_local_1[ent_str] = int(ent_id)
+
+with open('./part_2/entities.dict') as f:
+    for line in f:
+        ent_id, ent_str = line.strip().split('\t')
+        entities2id_local_2[ent_str] = int(ent_id)
+
+with open('./part_3/entities.dict') as f:
+    for line in f:
+        ent_id, ent_str = line.strip().split('\t')
+        entities2id_local_3[ent_str] = int(ent_id)
+
 local2global_0 = []
 local2global_1 = []
 local2global_2 = []
@@ -41,7 +66,7 @@ read_local2global('./part_2/local_to_global.txt', local2global_2)
 read_local2global('./part_3/local_to_global.txt', local2global_3)
 
 
-def check_part_train(path, local2global):
+def check_part_train(path, local2global, entities2id):
     with open(path) as f:
         for line in f:
             h, r, t = line.strip().split('\t')
@@ -58,9 +83,9 @@ def check_part_train(path, local2global):
                 print('do not have key: %s' % str_data)
 
 
-check_part_train('./part_0/train.txt', local2global_0)
-check_part_train('./part_1/train.txt', local2global_1)
-check_part_train('./part_2/train.txt', local2global_2)
-check_part_train('./part_3/train.txt', local2global_3)
+check_part_train('./part_0/train.txt', local2global_0, entities2id_local_0)
+check_part_train('./part_1/train.txt', local2global_1, entities2id_local_1)
+check_part_train('./part_2/train.txt', local2global_2, entities2id_local_2)
+check_part_train('./part_3/train.txt', local2global_3, entities2id_local_3)
 
 print("Finish Test")
